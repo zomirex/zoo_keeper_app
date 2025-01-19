@@ -1,5 +1,5 @@
 ﻿using zoo_keeper_app.Databases;
-class ZooAnimalsSaver 
+static class ZooAnimalsSaver 
 {
     static private Dictionary<Genus, int> AnimalCount = new() {
         { Genus.lions, 0 },
@@ -128,7 +128,7 @@ class ZooAnimalsSaver
         if (name != "")
         {
             SqlDB.EditAnimalName(name, id,pervname);
-            Console.WriteLine("name succesfully changed");
+            Console.WriteLine($"name {pervname} succesfully changed");
 
         }
         if (genus!=Genus.def) 
@@ -137,15 +137,15 @@ class ZooAnimalsSaver
             SqlDB.EditAnimalGenus(genus, pervname, id);
             if (x)
                 kindCount(genus, false);
-            Console.WriteLine("genus succesfully changed");
+            Console.WriteLine($"genus {pervname} succesfully changed");
 
         }
         if (age!=0)
         {
-            Console.WriteLine("age succesfully changed");
+            Console.WriteLine($"age {pervname} succesfully changed");
         }
         else
-            Console.WriteLine("pls atleast fill one field");
+            Console.WriteLine($"pls {pervname} atleast fill one field");
 
     }    
     private static void kindCount(Genus genus, bool add)

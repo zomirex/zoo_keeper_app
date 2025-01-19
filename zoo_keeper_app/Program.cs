@@ -6,69 +6,35 @@ using Microsoft.Data.SqlClient;
 using Microsoft.SqlServer;
 using zoo_keeper_app.Databases;
 
-// this is how to show 
-//var awaiter =  SqlDB.AnimalsList().GetAwaiter();
-//awaiter.OnCompleted(() =>
-//{
-//    foreach (var item in awaiter.GetResult())
-//    {
-//        Console.WriteLine($"|\tid : {item.id}\t|\tname : {item.name}\t| age:{item.age}\t| genus:{item.Genus}\t|");
-//        Console.WriteLine("".PadLeft(100, '_'));
-//    }
-
-//});
-
-//var x= ZooAnimalsSaver.RefreshData().GetAwaiter();
-//x.OnCompleted(() =>
-//{
-//    foreach (var item in ZooAnimalsSaver.list)
-//    {
-//        Console.WriteLine($"|\tid : {item.id}\t|\tname : {item.name}\t| age:{item.age}\t| genus:{item.Genus}\t|");
-//        Console.WriteLine("".PadLeft(100, '_'));
-//    }
-//});
-
-//var awaiter2 = SqlDB.AddAnimal(new animalList()
-//{
-//    id = 10,
-//    name = "Test",
-//    age = 1,
-//    Genus = Genus.snakes,
-//    ability = Ability.toxic
-
-//}).GetAwaiter().GetResult();
-//Console.WriteLine(awaiter2);
-//var test1 = new animalList()
-//{
-
-//    name = "leo",
-//    age = 1,
-//    Genus = Genus.snakes,
-//    ability = Ability.toxic
-//};
-//ZooAnimalsSaver.AddAnimals(test1);
-
-//ZooAnimalsSaver.EditAnimal(id: 240, age:1,name:"pashmak");
+//                    how to use this app
+//add animals
+ZooAnimalsSaver.AddAnimals(new Parrot { name = "jigar", age = 2 });
+ZooAnimalsSaver.AddAnimals(new Tiger { name = "pirooz", age = 2 });
+ZooAnimalsSaver.AddAnimals(new Lions { name = "leo", age = 10 });
+ZooAnimalsSaver.AddAnimals(new Cats { name = "pashmakk", age = 5 });
+//refres data 
 await ZooAnimalsSaver.RefreshData();
+// Show all data 
 ZooAnimalsSaver.Show.ShowAll();
-Console.WriteLine();
-Console.WriteLine();
-ZooAnimalsSaver.Show.Count(Genus.parrot);
-ZooAnimalsSaver.Show.Animal("gg");
+// show specific animal by id or name
 Console.ReadLine();
 Console.Clear();
+ZooAnimalsSaver.Show.Animal("leo");
+ZooAnimalsSaver.Show.Animal(28);
+// show the number of specific animal
+Console.ReadLine();
 
-//ZooAnimalsSaver.AddAnimals(new animalList() {name="gg",age=12,Genus=Genus.cats });
-//ZooAnimalsSaver.AddAnimals(new animalList() { name = "ggfg", age = 12, Genus = Genus.cats });
-
-//ZooAnimalsSaver.AddAnimals(new animalList() { name = "ggafds", age = 12234, Genus = Genus.lions });
-//ZooAnimalsSaver.AddAnimals(new animalList() { name = "ggatrewt", age = 1324, Genus = Genus.tigers });
-//ZooAnimalsSaver.AddAnimals(new animalList() { name = "ggsdfwead", age = 12342, Genus = Genus.snakes });
-
+Console.Clear();
+ZooAnimalsSaver.Show.Count(Genus.cats);
+//edit animall data
+ZooAnimalsSaver.EditAnimal(pervname:"jigarr",name:"sartalla",age:5);
+//delete animall
+ZooAnimalsSaver.DeleteAnimal(3);
+ZooAnimalsSaver.DeleteAnimal("leo");
+//refresh data again
+await ZooAnimalsSaver.RefreshData();
+//show finall data
+Console.ReadLine();
+Console.Clear();
 ZooAnimalsSaver.Show.ShowAll();
 
-ZooAnimalsSaver.Show.Count(Genus.cats);
-ZooAnimalsSaver.Show.Count(Genus.lions);
-ZooAnimalsSaver.Show.Count(Genus.tigers);
-
-Console.ReadLine();
